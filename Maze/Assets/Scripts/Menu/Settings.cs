@@ -1,28 +1,27 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField] private JoystickMover _joystickMover;
-    [SerializeField] private KeyboardMover _keyboardMover;
+    [SerializeField] private Mover _mover;
     [SerializeField] private GameObject _joystick;
     [SerializeField] private GameObject _startMenu;
 
     public void JoystickEnable()
     {
         _joystick.SetActive(true);
-        _joystickMover.enabled = true;
-        _keyboardMover.enabled = false;
+        _mover.EnableKeyboard(false);
         CloseWindow();
     }
 
     public void KeyboardEnable()
     {
         _joystick.SetActive(false);
-        _keyboardMover.enabled = true;
-        _joystickMover.enabled = false;
+        _mover.EnableKeyboard(true);
         CloseWindow();
     }
 
@@ -34,5 +33,10 @@ public class Settings : MonoBehaviour
     public void OpenMenu()
     {
         _startMenu.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

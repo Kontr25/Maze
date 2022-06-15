@@ -1,0 +1,5 @@
+
+interface IMaterial
+{
+    void ChangeMaterial();
+}

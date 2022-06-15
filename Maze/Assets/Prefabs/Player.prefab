@@ -110,7 +110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2734491837534019977}
   - component: {fileID: 3273271300267160542}
-  - component: {fileID: 2734491837534019979}
   - component: {fileID: 2734491837534019976}
   - component: {fileID: 5127674379710421325}
   m_Layer: 7
@@ -143,13 +142,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2734491837534019974}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 653d24dc8c3846947b3141b7cb2c9e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRigidbody: {fileID: 2734491837534019976}
-  _speed: 5
+  _speed: 10
   _health: 10
   _explosion: {fileID: 135106, guid: a060b39022c09dc4c942fbeecfe8fce1, type: 3}
   _damageEffect: {fileID: 7418337181028077009}
@@ -157,27 +156,7 @@ MonoBehaviour:
   - {fileID: 8852816503971061407, guid: c5c4c831b65568840b7b840e2074adfc, type: 3}
   - {fileID: 8852816503971061407, guid: 05340746be7cd6e4a959251e929751ff, type: 3}
   - {fileID: 8852816503971061407, guid: e98e8f25eec52874090b294417b46df9, type: 3}
---- !u!114 &2734491837534019979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2734491837534019974}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296eef90deca23c4c9c048e7c373fe3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerRigidbody: {fileID: 2734491837534019976}
-  _speed: 5
-  _health: 10
-  _explosion: {fileID: 135106, guid: a060b39022c09dc4c942fbeecfe8fce1, type: 3}
-  _damageEffect: {fileID: 7418337181028077009}
-  _blobPrefab:
-  - {fileID: 8852816503971061407, guid: c5c4c831b65568840b7b840e2074adfc, type: 3}
-  - {fileID: 8852816503971061407, guid: 05340746be7cd6e4a959251e929751ff, type: 3}
-  - {fileID: 8852816503971061407, guid: e98e8f25eec52874090b294417b46df9, type: 3}
+  _character: {fileID: 3273271300267160542}
   _joystick: {fileID: 0}
 --- !u!54 &2734491837534019976
 Rigidbody:

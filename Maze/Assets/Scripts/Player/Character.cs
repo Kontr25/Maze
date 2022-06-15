@@ -13,6 +13,37 @@ namespace Player
         [SerializeField] protected GameObject _explosion;
         [SerializeField] protected ParticleSystem _damageEffect;
         [SerializeField] protected GameObject[] _blobPrefab;
+        [SerializeField] private Character _character;
+        [SerializeField] private Health _healthBar;
+        protected bool _hasKey;
+        private float _startHealtPoint;
+
+
+        private void Start()
+        {
+            _startHealtPoint = _health;
+            GlobalEvent.DisableCharacter += DisableCharacter;
+        }
+
+        private void OnDestroy()
+        {
+            GlobalEvent.DisableCharacter -= DisableCharacter;
+        }
+
+        private void DisableCharacter()
+        {
+            _character.enabled = false;
+        }
+
+        public bool HasKey()
+        {
+            return _hasKey;
+        }
+
+        public void GetKey()
+        {
+            _hasKey = true;
+        }
 
         protected void Move(float horizontal, float vertical)
         {
@@ -22,7 +53,7 @@ namespace Player
             if (_direction != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction), Time.deltaTime * 10);
         }
 
-        protected void Speed(int speed)
+        public void Speed(float speed)
         {
             _speed = speed;
         }
@@ -30,6 +61,7 @@ namespace Player
         public virtual void OnDamaged(float damage)
         {
             _health -= damage;
+            _healthBar.UpdateHealthBar(_health);
 
             StartCoroutine(PunchScale());
 
@@ -50,9 +82,17 @@ namespace Player
 
         protected void Die()
         {
+            GlobalEvent.Defeat();
             Instantiate(_explosion, _playerRigidbody.transform.position, Quaternion.identity);
             Instantiate(_blobPrefab[Random.Range(0, 3)], new Vector3(_playerRigidbody.transform.position.x, _playerRigidbody.transform.position.y - 0.49f, _playerRigidbody.transform.position.z), Quaternion.identity);
             Destroy(_playerRigidbody.gameObject);
+        }
+
+        public void Hill(float HP)
+        {
+            _health += HP;
+            _healthBar.UpdateHealthBar(_health);
+            if (_health > _startHealtPoint) _health = _startHealtPoint;
         }
     }
 }
